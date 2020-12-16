@@ -9,22 +9,57 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+##Load tidyverse etc.
+```{r}
+library(tidyverse)
+library(dplyr)
+library(scales)
+library(ggplot2)
+```
+#How many entires are predicted to have glaucoma (glaucoma = 1) ? What is the average __ of those predicted to have glaucoma. Compare to mean of those predicted not to have glaucoma? Is the value of  RNFL4.mean able to predict glaucoma ?
+```{r}
+data <- read_csv('glaucoma_data/ds_whole.csv') %>%
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+ print()
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+data_g1 <- data %>%
+  select(`glaucoma`, `RNFL4.mean`) %>% #select columns and pipe to filter
+#filter for counts =1 using filter_if and all_vars
+  filter_if(is.numeric, all_vars(.>=1)) %>% #https://suzan.rbind.io/2018/02/dplyr-tutorial-3/#filter-if
+print()
 
-```{r cars}
-summary(cars)
+data_g0 <- data %>%
+  select(`glaucoma`, `RNFL4.mean`) %>% #select columns and pipe to filter
+#filter for counts =1 using filter_if and all_vars
+  filter_if(is.numeric, all_vars(.>=)) %>% #https://suzan.rbind.io/2018/02/dplyr-tutorial-3/#filter-if
+print()
+
+print(max(data_g0["RNFL4.mean"]))
+print(min(data_g0["RNFL4.mean"]))
+print(max(data_g1["RNFL4.mean"]))
+print(min(data_g1["RNFL4.mean"]))
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+#Plot the ratio between ocular_pressure and cornea thickness.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+
+```{r}
+q2 <- data %>%
+  mutate(ratio = (ocular_pressure / cornea_thickness)) %>%
+  select(ratio, RNFL4.mean) %>% #pull out only these
+  ggplot(aes(x = RNFL4.mean, y = ratio)) +
+  geom_point() +
+  scale_y_continuous()+
+  scale_x_binned(n.breaks = 10)
+
+q2
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+REPRODUCIBILITY
+this will work as long as glaucoma predictuon is binary 0 or 1. 
+
