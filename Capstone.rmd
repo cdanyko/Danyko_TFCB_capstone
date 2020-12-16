@@ -16,7 +16,7 @@ library(dplyr)
 library(scales)
 library(ggplot2)
 ```
-#How many entires are predicted to have glaucoma (glaucoma = 1) ? What is the max RNFL4.mean of those predicted to have glaucoma. Compare to mean of those predicted not to have glaucoma? Is the value of  RNFL4.mean able to predict glaucoma ?
+# How many entires are predicted to have glaucoma (glaucoma = 1) ? What is the max RNFL4.mean of those predicted to have glaucoma. Compare to mean of those predicted not to have glaucoma? Is the value of  RNFL4.mean able to predict glaucoma ?
 ```{r}
 data <- read_csv('glaucoma_data/ds_whole.csv') %>% #read csv file
  print()
@@ -39,7 +39,7 @@ print((max(data_g0["RNFL4.mean"])-(max(data_g1["RNFL4.mean"])))) #difference bet
 
 print((min(data_g0["RNFL4.mean"])-(min(data_g1["RNFL4.mean"])))) #difference between min RNFL4.mean for those with vs without glaucoma.
 ```
-##Answer
+## Answer
 297 have glaucoma 
 202 do not have glaucoma
 There is a difference of 52.3 between maximum RNFL4.mean of those with versus without glaucoma.
@@ -47,7 +47,7 @@ There is a difference of 42.7 between maximum RNFL4.mean of those with versus wi
 Therefore, RLFL4.mean may be a useful metric in predicting glaucoma since those with glaucoma have a lower range of scores for this metric.   
 
 
-#How does the ratio between ocular_pressure and cornea thickness change with age.
+# How does the ratio between ocular_pressure and cornea thickness change with age.
 
 
 ```{r}
@@ -63,11 +63,12 @@ q2 #print
 
 ```
 
-##Answer The graph shows that as age increases, so does the range of ratios observed.  Ages 1-40 have smaller variation in this ratio. There also seems to be a slight increased ratio associated with increased age.
+## Answer 
+The graph shows that as age increases, so does the range of ratios observed.  Ages 1-40 have smaller variation in this ratio. There also seems to be a slight increased ratio associated with increased age.
 
 
 
-REPRODUCIBILITY
+# REPRODUCIBILITY
 Question 1 code will work for any column where an assigned value can be called on, in this case 0 or 1. 
 Question 2 code is reproducible for all values that can be divided. The scaling may need to be changed for different datasets and questions. 
 

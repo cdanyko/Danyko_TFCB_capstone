@@ -1,4 +1,4 @@
-#Cassidy Danykos TFCB Capstone Project
+# Cassidy Danykos TFCB Capstone Project
 
 ## Data and Citation
 Data downloaded from:[Glaucoma diagnosis](https://datadryad.org/stash/dataset/doi:10.5061/dryad.q6ft5)
@@ -8,10 +8,11 @@ Kim, Seongjae; Cho, Kyung Jin; Oh, Sejong (2018), Data from: Development of mach
 
 ### This includes three csv files:
 - ds_test
-	- Columns include   
-	RL | glaucoma | age | ocular_Pressure | MD | PSD | GHT | cornea_thickness|RNFL4.mean
 - ds_train
 - ds_whole
+Columns:    
+RL | glaucoma | age | ocular_Pressure | MD | PSD | GHT | cornea_thickness | RNFL4.mean
+
 
 ### Assumptions on data 
 RNFL: retinal nerve fiber layer thickness  
@@ -23,10 +24,10 @@ OS: left eye
 
  
 ## About the Analyses 
--I used R Markdown, Markdown, and Python in this project.
--In R Markdown, load tidyverse, dplyr, scales, ggplot2)
--In Jupyter Notebook, import matplotlib.pyplot as plt; import pandas as pd; from sklearn.decomposition import PCA; from sklearn.preprocessing import StandardScaler
--I used ds_whole for all analyses.  This file contains the data from both ds_test and ds_train.
+- I used R Markdown, Markdown, and Python in this project.
+	- In R Markdown, load tidyverse, dplyr, scales, ggplot2)
+	- In Jupyter Notebook, import matplotlib.pyplot as plt; import pandas as pd; from sklearn.decomposition import PCA; from sklearn.preprocessing import StandardScaler
+- I used ds_whole for all analyses.  This file contains the data from both ds_test and ds_train.
 
 ### Question 1: How many entires are predicted to have glaucoma (glaucoma = 1) ? What is the max RNFL4.mean of those predicted to have glaucoma. Compare to mean of those predicted not to have glaucoma? Is the value of  RNFL4.mean able to predict glaucoma ?
 - This was completed in file [Capstone.rmd)](Capstone.rmd) 
@@ -34,13 +35,12 @@ OS: left eye
 
  
 
-### Question 2: #How does the ratio between ocular_pressure and cornea thickness change with age.
+### Question 2: How does the ratio between ocular_pressure and cornea thickness change with age.
 - This was completed in file [Capstone.rmd)](Capstone.rmd) 
 - mutate to create a new column of the ratio, select these columns and use ggplot to make a geo_point graph. I used a binned scale to better represent the data by age group.
  
  
-### Question 3
-Do these data show nice grouping in PCA analysis between MD and RNFL4.mean?
+### Question 3: Do these data show nice grouping in PCA analysis between MD and RNFL4.mean?
 - This was completed in file [Capstone_JN.ipynb](Capstone_JN.ipynb)
 - load data into dataframe, remove RL and glaucoma columns, PCA and plot. 
  
