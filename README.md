@@ -22,28 +22,36 @@ MD: mean VF distance
 PSD:pattern standard deviation (progression of glaucoma)
 OD:right eye
 OS: left eye
-##Project Organization
- two report R fies
- jupyter notebook
+
  
-##About the Analysis 
-###Question 1
- What are the max and min ratios of ocular_pressure to cornea thickness for those with glaucoma
- Use tidyverse in R
- read test csv file
- glaucoma = 1 
- make ratio column
- sort by that column
- get max and min
+##About the Analyses 
+-I used R Markdown, Markdown, and Python in this project.
+-In R Markdown, load tidyverse, dplyr, scales, ggplot2)
+-In Jupyter Notebook, import matplotlib.pyplot as plt; import pandas as pd; from sklearn.decomposition import PCA; from sklearn.preprocessing import StandardScaler
+-I used ds_whole for all analyses.  This file contains the data from both ds_test and ds_train.
+
+###Question 1: How many entires are predicted to have glaucoma (glaucoma = 1) ? What is the max RNFL4.mean of those predicted to have glaucoma. Compare to mean of those predicted not to have glaucoma? Is the value of  RNFL4.mean able to predict glaucoma ?
+- This was completed in file [Capstone.rmd)](Capstone.rmd) 
+- Read csv file, filter for glaucoma=0 or glaucoma=1, get max and mins, use arithmetic to compare.
+
  
- ###
-### Create a summary chart of the average RLRNFL4.mean for both eyes(group OD OS with index below meh )
- Plot the relationship between age and RNFL4.mean
- Use ggplot in R
+
+###Question 2: #How does the ratio between ocular_pressure and cornea thickness change with age.
+- This was completed in file [Capstone.rmd)](Capstone.rmd) 
+- mutate to create a new column of the ratio, select these columns and use ggplot to make a geo_point graph. I used a binned scale to better represent the data by age group.
+ 
  
 ### Question 3
- python jupyter notebook with ggplot
+Do these data show nice grouping in PCA analysis between MD and RNFL4.mean?
+- This was completed in file [Capstone_JN.ipynb](Capstone_JN.ipynb)
+- load data into dataframe, remove RL and glaucoma columns, PCA and plot. 
  
 ##Reproducibility
+The data available for this study had no readme file to explain the data.
+They did not provide a key to understanding the data, including but not limited to information about the column names and analysis done on the data. 
+They also did not provide code to process this data.
+These data do not follow reproducibility guidelines because I cannot take the raw data  and run the same analysis that the author used and confirm that it generates the same results. 
+
+The analyses I've completed have reproducibility notes in each document. I have followed reproducibility guidelines by including the datafiles and analyses within a single git hub project. 
  
  
